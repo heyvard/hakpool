@@ -11,6 +11,20 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+const env = process.env.NODE_ENV || 'development';
+
+const forceSsl = (req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(['https://', req.get('Host'), req.url].join(''));
+  }
+  return next();
+};
+
+
+if (env === 'production') {
+  app.use(forceSsl);
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
