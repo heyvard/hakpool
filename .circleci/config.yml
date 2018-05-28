@@ -2,12 +2,19 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/node:8.9.4
     steps:
       - checkout
+      - restore_cache:
+          key: node_modules-{{ checksum "package.json" }}
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: install
+          command: npm install
+      - save_cache:
+          key: node_modules-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: mkdir -p ~/eslint-reports
       - run:
-          name: Print the Current Time
-          command: date
+          name: Lint
+          command: node_modules/eslint/bin/eslint.js . --max-warnings 0 --format junit --output-file ~/eslint-reports/eslint.xml
