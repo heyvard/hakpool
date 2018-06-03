@@ -34,7 +34,6 @@ const verifySessionAsync = asyncHandler(async (req, res, next) => {
 
 
   const userId = claims.sub;
-  console.log(`Søker etter ${userId}`);
 
   const users = (await knex.raw(`
 SELECT *

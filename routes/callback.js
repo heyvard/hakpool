@@ -71,6 +71,17 @@ router.get('/', asyncHandler(async (req, res) => {
       .returning('id')
       .into('users');
 
+    const matchIds = await knex.select('id')
+      .from('matches');
+
+    const userBets = [];
+
+    for (let i = 0; i < matchIds.length; i++) {
+      userBets.push({ user_id: id + '', match_id: matchIds[i].id + '' });
+    }
+
+    await knex('bets').insert(userBets); //TODO samme transakasjon som insert user
+
     setCookieAndRedirect(id, res);
   } else {
     setCookieAndRedirect(user[0].id, res);
