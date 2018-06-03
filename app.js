@@ -8,12 +8,12 @@ const logger = require('morgan');
 const knexConfig = require('./knexfile.js');
 const knex = require('knex')(knexConfig);
 const session = require('./middleware/session');
+const exphbs = require("express-handlebars");
 
 knex.migrate.latest([knexConfig]);
 
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const callbackRouter = require('./routes/callback');
 
 const app = express();
@@ -33,7 +33,14 @@ if (env === 'production') {
 }
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+
+app.engine("hbs", exphbs({
+  defaultLayout: "main",
+  extname: ".hbs",
+  helpers: require("./lib/helpers.js").helpers, // same file that gets used on our client
+  partialsDir: "views/partials/", // same as default, I just like to be explicit
+  layoutsDir: "views/layouts/" // same as default, I just like to be explicit
+}));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -46,7 +53,6 @@ app.all('/*', session);
 
 app.use('/', indexRouter);
 app.use('/callback', callbackRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

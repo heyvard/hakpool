@@ -1,8 +1,13 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 65px;
 }
 
-a {
-  color: #00B7FF;
+.resultInput{
+    width: 45px;
+    text-align: center;
+    border:thin black solid;
+}
+
+.table td, .table th {
+    padding: 1px; !important;
 }

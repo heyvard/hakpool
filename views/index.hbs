@@ -1,2 +1,23 @@
-<h1>Import Export betpool</h1>
 <p>Velkommen {{username}}</p>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Tid</th>
+        <th scope="col">Kamp</th>
+        <th scope="col">Bet</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each upcoming}}
+    <tr>
+        <td style="font-size: 8px">{{formatDate this.game_start}} {{this.channel}}</td>
+        <td>{{this.home_team}} - {{this.away_team}}</td>
+        <td style="width: 130px;">
+            <input id="number" type="number" class="resultInput" value="{{this.home_score}}"> - <input id="number" class="resultInput" type="number" value="{{this.away_score}}">
+        </div>
+        </td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>
