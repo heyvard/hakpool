@@ -33,16 +33,22 @@ const verifySessionAsync = asyncHandler(async (req, res, next) => {
   const claims = verifyToken(token);
 
 
-  const user = await knex.select('*')
-    .from('users')
-    .where('id', claims.sub);
+  const userId = claims.sub;
+  console.log(`Søker etter ${userId}`);
 
-  if (user.length === 0) {
+  const users = (await knex.raw(`
+SELECT *
+FROM users
+WHERE id = ?;`,
+    [userId])).rows;
+
+
+  if (users.length === 0) {
     redirectToGoogle(res);
     return;
   }
 
-  const theUser = user[0];
+  const theUser = users[0];
 
   req.user = theUser; // eslint-disable-line no-param-reassign
   next();

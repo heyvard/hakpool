@@ -14,7 +14,3 @@ jobs:
           key: node_modules-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run: mkdir -p ~/eslint-reports
-      - run:
-          name: Lint
-          command: node_modules/eslint/bin/eslint.js . --max-warnings 0 --format junit --output-file ~/eslint-reports/eslint.xml
