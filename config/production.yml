@@ -1,0 +1,4 @@
+---
+googleClientId: '3etd6igeae6ektkqb7jrggrd6cfjv5bu.apps.googleusercontent.com'
+redirectUri: https://vandelay.herokuapp.com/callback
+cookieSecure: true

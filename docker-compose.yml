@@ -1,0 +1,13 @@
+version: '2'
+services:
+    postgres:
+        image: postgres
+        ports:
+            - "6001:5432"
+        volumes:
+            - ./postgres:/docker-entrypoint-initdb.d
+        environment:
+            POSTGRES_USER: hakpool
+            POSTGRES_PASSWORD: dev
+            POSTGRES_MULTIPLE_DATABASES: test mocks
+        command: -c fsync=off -c full_page_writes=off

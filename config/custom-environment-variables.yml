@@ -1,0 +1,4 @@
+---
+databaseUrl: DATABASE_URL
+jwtSecret: JWT_SECRET
+googleClientSecret: GOOGLE_CLIENT_SECRET

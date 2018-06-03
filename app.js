@@ -5,9 +5,16 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const knexConfig = require('./knexfile.js');
+const knex = require('knex')(knexConfig);
+const session = require('./middleware/session');
+
+knex.migrate.latest([knexConfig]);
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const callbackRouter = require('./routes/callback');
 
 const app = express();
 
@@ -35,7 +42,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.all('/*', session);
+
 app.use('/', indexRouter);
+app.use('/callback', callbackRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

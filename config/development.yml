@@ -1,0 +1,5 @@
+---
+googleClientId: '428100095846-3etd6igeae6ektkqb7jrggrd6cfjv5bu.apps.googleusercontent.com'
+redirectUri: http://localhost:3000/callback
+databaseUrl: 'postgres://hakpool:dev@localhost:6001/hakpool'
+cookieSecure: false
