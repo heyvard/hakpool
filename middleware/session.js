@@ -40,7 +40,7 @@ const verifySessionAsync = asyncHandler(async (req, res, next) => {
 SELECT *
 FROM users
 WHERE id = ?;`,
-    [userId])).rows;
+    [userId + ''])).rows;
 
 
   if (users.length === 0) {
