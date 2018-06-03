@@ -29,8 +29,12 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 function isValidMatch(validMatches, id) {
-  //TODO implement
-  return true;
+  for (let i = 0; i < validMatches.length; i++) {
+    if (validMatches[i].id === id) {
+      return true;
+    }
+  }
+  return false;
 }
 
 router.post('/', asyncHandler(async (req, res) => {
