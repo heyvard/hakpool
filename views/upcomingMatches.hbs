@@ -1,37 +1,31 @@
-<p>Velkommen {{username}}</p>
-
 <form action="/" method="post">
-    <button type="submit" class="btn btn-outline-primary">Send inn</button>
-    <br>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">Tid</th>
-            <th scope="col">Kamp</th>
-            <th scope="col">Bet</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each upcoming}}
-            <tr>
-                <td style="font-size: 8px">{{formatDate this.game_start}} {{this.channel}}</td>
-                <td>{{this.home_team}} - {{this.away_team}}</td>
-                <td style="width: 130px;">
-                    <input name="home-{{match_id}}"
-                           type="number"
-                           onclick="handleSelectChange(this)"
-                           class="resultInput"
-                           value="{{this.home_score}}">
-                    -
-                    <input name="away-{{match_id}}"
-                           class="resultInput"
-                           type="number"
-                           onclick="handleSelectChange(this)"
-                           value="{{this.away_score}}">
-                    </div>
-                </td>
-            </tr>
-        {{/each}}
-        </tbody>
-    </table>
+
+    <div class="container-fluid">
+        <h2>Kommende kamper</h2>
+        <p>Du kan oppdatere frem til kampstart. Innsendinger etter kampstart blir ikke lagret</p>
+        <button type="submit" class="btn btn-outline-primary">Send inn</button>
+    </div>
+
+
+    {{#each upcoming}}
+        <div class="container-fluid">
+
+            <h6>{{formatDate this.game_start}} {{this.channel}}</h6>
+            <div class="match-container">
+                <span>{{this.home_team}} </span> <input name="home-{{match_id}}"
+                                                        type="number"
+                                                        onclick="handleSelectChange(this)"
+                                                        class="resultInput"
+                                                        value="{{this.home_score}}">
+            </div>
+            <div class="match-container">
+                <span>{{this.away_team}} </span> <input name="away-{{match_id}}"
+                                                        type="number"
+                                                        onclick="handleSelectChange(this)"
+                                                        class="resultInput"
+                                                        value="{{this.away_score}}">
+            </div>
+        </div>
+
+    {{/each}}
 </form>

@@ -13,8 +13,11 @@ const exphbs = require("express-handlebars");
 knex.migrate.latest([knexConfig]);
 
 
-const upcomingMatches = require('./routes/upcomingMatches');
+const upcomingMatchesRouter = require('./routes/upcomingMatches');
 const callbackRouter = require('./routes/callback');
+const leaderboardRouter = require('./routes/leaderboard');
+const pastMatchesRouter = require('./routes/pastMatches');
+const ruklesRouter = require('./routes/rules');
 
 const app = express();
 
@@ -51,8 +54,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('/*', session);
 
-app.use('/', upcomingMatches);
+app.use('/', upcomingMatchesRouter);
+app.use('/leaderboard', leaderboardRouter);
+app.use('/pastMatches', pastMatchesRouter);
 app.use('/callback', callbackRouter);
+app.use('/rules', ruklesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

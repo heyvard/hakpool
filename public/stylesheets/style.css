@@ -1,13 +1,23 @@
 body {
-  padding-top: 65px;
+    padding-top: 65px;
 }
 
-.resultInput{
+.resultInput {
     width: 45px;
     text-align: center;
-    border:thin black solid;
+    border: thin black solid;
 }
 
-.table td, .table th {
-    padding: 1px; !important;
+.match-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 10px;
+}
+
+.match-container input {
+    float: right;
+}
+
+.container-fluid {
+    padding-top: 15px
 }
