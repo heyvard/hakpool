@@ -66,7 +66,7 @@ router.get('/', asyncHandler(async (req, res) => {
       picture: userinfo.picture,
       google_id: userinfo.id,
       admin: false,
-      active: false,
+      active: true,
     })
       .returning('id')
       .into('users');

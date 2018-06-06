@@ -1,5 +1,24 @@
 <div class="container-fluid">
-    <h2>Lukkede kamper</h2>
-    <p>Her ser du dine tidligere kamper og hva du har betta på dem. Klikker du på en spesifikk kamp ser du også de andre
-        sine bets.</p>
+    <h2>Lukkede kamper for {{betsFor}}</h2>
 </div>
+
+
+{{#each bets}}
+    <div class="container-fluid">
+
+        <h6>{{score}} poeng</h6>
+        <div class="match-container">
+            <span> {{this.home_result}} {{this.home_team}}</span> <input disabled
+                                                                        type="number"
+                                                                        class="resultInput"
+                                                                        value="{{this.home_score}}">
+        </div>
+        <div class="match-container">
+            <span> {{this.away_result}} {{this.away_team}}</span> <input disabled
+                                                                        type="number"
+                                                                        class="resultInput"
+                                                                        value="{{this.away_score}}">
+        </div>
+    </div>
+
+{{/each}}
