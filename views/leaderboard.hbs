@@ -1,5 +1,25 @@
 <div class="container-fluid">
     <h2>Leaderboard</h2>
     <p>Klikker du på en bruker ser du denne brukerens lukkede bets.</p>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Navn</th>
+            <th scope="col">Poeng</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each leaderboard}}
+            <tr>
+                <th scope="row">{{inc @index}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.score}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </div>
 
