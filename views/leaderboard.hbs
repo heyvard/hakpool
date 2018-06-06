@@ -15,7 +15,7 @@
         {{#each leaderboard}}
             <tr>
                 <th scope="row">{{inc @index}}</th>
-                <td>{{this.name}}</td>
+                <td><a class="nav-link" href="/pastMatches/{{this.userid}}">{{this.name}}</a></td>
                 <td>{{this.score}}</td>
             </tr>
         {{/each}}

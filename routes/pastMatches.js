@@ -25,5 +25,16 @@ router.get('/', asyncHandler(async (req, res) => {
   res.render('pastMatches', { username: req.user.name, betsFor: req.user.name, bets });
 }));
 
+router.get('/:userid', asyncHandler(async (req, res) => {
+  const bets = scoreCalculator(await getPastBets(req.params.userid));
+
+  const raw = await knex.raw(`
+SELECT name from users where id = ?;`,
+    [req.params.userid + '']);
+  const username = raw.rows[0].name;
+
+  res.render('pastMatches', { username: req.user.name, betsFor: username, bets });
+}));
+
 
 module.exports = router;
