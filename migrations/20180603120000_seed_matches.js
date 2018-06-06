@@ -97,7 +97,7 @@ exports.up = async (knex) => {
     {
       type: 'ROUND1',
       home_team: '🇹🇳 Tunisia',
-      away_team: '󠁧󠁧󠁮🇮🇲 England',
+      away_team: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',
       game_start: '2018-06-18 20:00:00+02',
       channel: 'NRK1'
     },
@@ -208,7 +208,7 @@ exports.up = async (knex) => {
     },
     {
       type: 'ROUND2',
-      home_team: '󠁧󠁧󠁮🇮🇲 England',
+      home_team: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',
       away_team: '🇵🇦 Panama',
       game_start: '2018-06-24 14:00:00+02',
       channel: 'TV2'
@@ -327,7 +327,7 @@ exports.up = async (knex) => {
     },
     {
       type: 'ROUND3',
-      home_team: '󠁧󠁧󠁮🇮🇲 England',
+      home_team: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',
       away_team: '🇧🇪 Belgia',
       game_start: '2018-06-28 20:00:00+02',
       channel: 'NRK1'
