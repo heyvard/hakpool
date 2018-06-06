@@ -288,56 +288,56 @@ exports.up = async (knex) => {
       home_team: '🇰🇷 Sør-Korea',
       away_team: '🇩🇪 Tyskland',
       game_start: '2018-06-27 16:00:00+02',
-      channel: 'X'
+      channel: 'NRK2'
     },
     {
       type: 'ROUND3',
       home_team: '🇲🇽 Mexico',
       away_team: '🇸🇪 Sverige',
       game_start: '2018-06-27 16:00:00+02',
-      channel: 'X'
+      channel: 'NRK1'
     },
     {
       type: 'ROUND3',
       home_team: '🇨🇭 Sveits',
       away_team: '🇨🇷 Costa Rica',
       game_start: '2018-06-27 20:00:00+02',
-      channel: 'X'
+      channel: 'TV2 Sport'
     },
     {
       type: 'ROUND3',
       home_team: '🇷🇸 Serbia',
       away_team: '🇧🇷 Brasil',
       game_start: '2018-06-27 20:00:00+02',
-      channel: 'X'
+      channel: 'TV2'
     },
     {
       type: 'ROUND3',
       home_team: '🇸🇳 Senegal',
       away_team: '🇨🇴 Colombia',
       game_start: '2018-06-28 16:00:00+02',
-      channel: 'X'
+      channel: 'TV2'
     },
     {
       type: 'ROUND3',
       home_team: '🇯🇵 Japan',
       away_team: '🇵🇱 Polen',
       game_start: '2018-06-28 16:00:00+02',
-      channel: 'X'
+      channel: 'TV2 Sport'
     },
     {
       type: 'ROUND3',
       home_team: '󠁧󠁧󠁮🇮🇲 England',
       away_team: '🇧🇪 Belgia',
       game_start: '2018-06-28 20:00:00+02',
-      channel: 'X'
+      channel: 'NRK1'
     },
     {
       type: 'ROUND3',
       home_team: '🇵🇦 Panama',
       away_team: '🇹🇳 Tunisia',
       game_start: '2018-06-28 20:00:00+02',
-      channel: 'X'
+      channel: 'NRK3'
     },
     {
       type: '8',
