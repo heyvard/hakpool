@@ -1,0 +1,41 @@
+<form action="/resultservice" method="post">
+
+    <div class="container-fluid">
+        <h2>Resultatservice</h2>
+        <p>Kun for admins, oppdatering av resultat og nye kamper</p>
+        <button type="submit" class="btn btn-outline-primary">Send inn</button>
+    </div>
+
+
+    {{#each matches}}
+        <div class="container-fluid">
+
+            <h6>{{formatDate this.game_start}} på {{this.channel}}</h6>
+            <div class="resultservice-container">
+                <input name="home_team%{{id}}"
+                       type="text"
+                       onclick="handleSelectChange(this)"
+                       class="resultserviceInput"
+                       value="{{this.home_team}}">
+                <input name="home_score%{{id}}"
+                       type="number"
+                       onclick="handleSelectChange(this)"
+                       class="resultserviceInput"
+                       value="{{this.home_score}}">
+            </div>
+            <div class="resultservice-container">
+                <input name="away_team%{{id}}"
+                       type="text"
+                       onclick="handleSelectChange(this)"
+                       class="resultserviceInput"
+                       value="{{this.away_team}}">
+                <input name="away_score%{{id}}"
+                       type="number"
+                       onclick="handleSelectChange(this)"
+                       class="resultserviceInput"
+                       value="{{this.away_score}}">
+            </div>
+        </div>
+
+    {{/each}}
+</form>

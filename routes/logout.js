@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
   res.clearCookie('accessToken');
-  res.render('logout', { username: req.user.name });
+  res.render('logout', { user: req.user });
 }));
 
 

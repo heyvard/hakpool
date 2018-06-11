@@ -22,7 +22,7 @@ ORDER BY game_start desc, m.id asc;`,
 router.get('/', asyncHandler(async (req, res) => {
   const bets = scoreCalculator(await getPastBets(req.user.id));
 
-  res.render('pastMatches', { username: req.user.name, betsFor: req.user.name, bets });
+  res.render('pastMatches', { user: req.user, betsFor: req.user.name, bets });
 }));
 
 router.get('/:userid', asyncHandler(async (req, res) => {
@@ -33,7 +33,7 @@ SELECT name from users where id = ?;`,
     [req.params.userid + '']);
   const username = raw.rows[0].name;
 
-  res.render('pastMatches', { username: req.user.name, betsFor: username, bets });
+  res.render('pastMatches', { user: req.user, betsFor: username, bets });
 }));
 
 

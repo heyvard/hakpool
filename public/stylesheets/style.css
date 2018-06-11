@@ -8,6 +8,17 @@ body {
     border: thin black solid;
 }
 
+.resultserviceInput {
+    text-align: center;
+    border: thin black solid;
+}
+
+.resultservice-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 10px;
+}
+
 .match-container {
     width: 90%;
     max-width: 400px;

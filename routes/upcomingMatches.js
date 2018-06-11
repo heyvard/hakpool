@@ -21,7 +21,7 @@ AND game_start > now()
 ORDER BY game_start, m.id asc;`,
     [req.user.id + ''])).rows;
 
-  res.render('upcomingMatches', { username: req.user.name, upcoming });
+  res.render('upcomingMatches', { user: req.user, upcoming });
 }
 
 router.get('/', asyncHandler(async (req, res) => {

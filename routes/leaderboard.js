@@ -69,7 +69,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
   personsFlat.sort(compare)
 
-  res.render('leaderboard', { username: req.user.name, leaderboard: personsFlat });
+  res.render('leaderboard', { user: req.user, leaderboard: personsFlat });
 }));
 
 
