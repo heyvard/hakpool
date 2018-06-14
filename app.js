@@ -18,6 +18,7 @@ const callbackRouter = require('./routes/callback');
 const leaderboardRouter = require('./routes/leaderboard');
 const pastMatchesRouter = require('./routes/pastMatches');
 const rulesRouter = require('./routes/rules');
+const matchesRouter = require('./routes/matches');
 const resultRouter = require('./routes/resultservice');
 const logoutRouter = require('./routes/logout');
 
@@ -60,6 +61,7 @@ app.use('/', upcomingMatchesRouter);
 app.use('/leaderboard', leaderboardRouter);
 app.use('/pastMatches', pastMatchesRouter);
 app.use('/callback', callbackRouter);
+app.use('/match', matchesRouter);
 app.use('/logout', logoutRouter);
 app.use('/resultservice', resultRouter);
 app.use('/rules', rulesRouter);

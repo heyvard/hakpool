@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <h2>{{match.home_team}} - {{match.away_team}} </h2>
+    <h4>{{match.home_result}} - {{match.away_result}} </h4>
+</div>
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Navn</th>
+        <th scope="col">Bet</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each bets}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.home_score}} - {{this.away_score}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
