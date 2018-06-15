@@ -32,7 +32,7 @@ function compare(a, b) {
     return -1;
   }
   // a must be equal to b
-  return 0;
+  return a.name.localeCompare(b.name);
 }
 
 router.get('/', asyncHandler(async (req, res) => {
