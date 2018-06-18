@@ -5,9 +5,12 @@ const asyncHandler = require('express-async-handler');
 
 const router = express.Router();
 
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/rules', asyncHandler(async (req, res) => {
   res.render('rules', { user: req.user });
 }));
 
+router.get('/groups', asyncHandler(async (req, res) => {
+  res.render('groups', { user: req.user });
+}));
 
 module.exports = router;
