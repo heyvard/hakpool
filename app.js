@@ -17,7 +17,7 @@ const upcomingMatchesRouter = require('./routes/upcomingMatches');
 const callbackRouter = require('./routes/callback');
 const leaderboardRouter = require('./routes/leaderboard');
 const pastMatchesRouter = require('./routes/pastMatches');
-const staticsRouter = require('./routes/statics');
+const rulesRouter = require('./routes/rules');
 const matchesRouter = require('./routes/matches');
 const resultRouter = require('./routes/resultservice');
 const logoutRouter = require('./routes/logout');
@@ -64,7 +64,7 @@ app.use('/callback', callbackRouter);
 app.use('/match', matchesRouter);
 app.use('/logout', logoutRouter);
 app.use('/resultservice', resultRouter);
-app.use('/', staticsRouter);
+app.use('/rules', rulesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
