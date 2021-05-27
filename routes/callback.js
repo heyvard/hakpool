@@ -60,12 +60,18 @@ router.get('/', asyncHandler(async (req, res) => {
     .where('google_id', userinfo.id);
 
   if (user.length === 0) {
+
+    let admin = false
+    if(userinfo.email === "havard.stigen.andersen@gmail.com" || userinfo.email === "herman.kofoed@gmail.com"){
+      admin = true
+    }
+
     const id = await knex.insert({
       name: userinfo.name,
       email: userinfo.email,
       picture: userinfo.picture,
       google_id: userinfo.id,
-      admin: false,
+      admin: admin,
       active: true,
     })
       .returning('id')
