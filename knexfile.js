@@ -4,7 +4,10 @@ const config = require('config');
 
 module.exports = {
   client: 'pg',
-  connection: config.get('databaseUrl') + "?ssl=true",
+  connection: {
+    connectionString: config.get('databaseUrl'),
+    ssl: { rejectUnauthorized: false },
+  },
   migrations: {
     tableName: 'knex_migrations',
   },
