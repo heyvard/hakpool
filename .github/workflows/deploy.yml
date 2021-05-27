@@ -14,5 +14,5 @@ jobs:
         if: github.ref == 'refs/heads/master'
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP}}
+          heroku_app_name: em2021-betpool
           heroku_email: ${{secrets.HEROKU_EMAIL}}
