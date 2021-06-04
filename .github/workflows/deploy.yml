@@ -20,5 +20,5 @@ jobs:
         if: github.ref == 'refs/heads/master'
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: arithalion
+          heroku_app_name: kofoed
           heroku_email: ${{secrets.HEROKU_EMAIL}}
