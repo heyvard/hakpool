@@ -1,4 +1,3 @@
 ---
 googleClientId: '428100095846-3etd6igeae6ektkqb7jrggrd6cfjv5bu.apps.googleusercontent.com'
-redirectUri: https://em2021-betpool.herokuapp.com/callback
 cookieSecure: true
