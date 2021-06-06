@@ -4,6 +4,8 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const scoreCalculator = require('./../lib/scoreCalculator');
 const knexConfig = require('./../knexfile.js');
+const matchResultScores = require("../lib/matchResultScores");
+const getAllBets = require("../lib/getAllBets");
 const knex = require('knex')(knexConfig);
 
 const router = express.Router();
@@ -20,13 +22,19 @@ ORDER BY game_start desc, m.id asc;`,
 }
 
 router.get('/', asyncHandler(async (req, res) => {
-  const bets = scoreCalculator(await getPastBets(req.user.id));
+  const allBets = await getAllBets();
+
+  const matchScoreMap = matchResultScores(allBets)
+  const bets = scoreCalculator(await getPastBets(req.user.id), matchScoreMap);
 
   res.render('pastMatches', { user: req.user, betsFor: req.user.name, bets });
 }));
 
 router.get('/:userid', asyncHandler(async (req, res) => {
-  const bets = scoreCalculator(await getPastBets(req.params.userid));
+  const allBets = await getAllBets();
+
+  const matchScoreMap = matchResultScores(allBets)
+  const bets = scoreCalculator(await getPastBets(req.params.userid), matchScoreMap);
 
   const raw = await knex.raw(`
 SELECT name from users where id = ?;`,

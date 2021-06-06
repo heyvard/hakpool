@@ -6,31 +6,11 @@ const asyncHandler = require('express-async-handler');
 const scoreCalculator = require('./../lib/scoreCalculator');
 const knexConfig = require('./../knexfile.js');
 const matchResultScores = require("../lib/matchResultScores");
+const getAllBets = require("../lib/getAllBets");
 const knex = require('knex')(knexConfig);
 
 const router = express.Router();
 
-
-async function getAllBets() {
-    return (await knex.raw(`
-        SELECT u.id         userid,
-               u.name,
-               b.match_id,
-               m.game_start,
-               m.away_team,
-               m.home_team,
-               b.home_score,
-               b.away_score,
-               m.type,
-               m.home_score home_result,
-               m.away_score away_result
-        FROM bets b,
-             matches m,
-             users u
-        WHERE b.user_id = u.id
-          AND b.match_id = m.id
-          AND game_start < now();`)).rows;
-}
 
 async function getEmptyBoard() {
     return (await knex.raw(`
@@ -57,9 +37,9 @@ router.get('/', asyncHandler(async (req, res) => {
         return;
     }
 
-    const matchScores = matchResultScores(allBets)
-    console.log("Match scores: ", matchScores)
-    console.log("Match scores: " + JSON.stringify(matchScores))
+    const matchScoreMap = matchResultScores(allBets)
+    console.log("Match scores: ", matchScoreMap)
+    console.log("Match scores: " + JSON.stringify(matchScoreMap))
 
     const personMap = {};
 
@@ -70,7 +50,7 @@ router.get('/', asyncHandler(async (req, res) => {
     const processedPersons = [];
 
     Object.keys(personMap).forEach(function (key) {
-        const calculated = scoreCalculator(personMap[key]);
+        const calculated = scoreCalculator(personMap[key], matchScoreMap);
         processedPersons.push(calculated);
         // key: the name of the object key
         // index: the ordinal position of the key within the object
