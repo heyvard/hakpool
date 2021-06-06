@@ -12,7 +12,7 @@ const router = express.Router();
 
 async function getPastBets(userId) {
   return (await knex.raw(`
-SELECT m.id, m.game_start, m.match_id, m.away_team, m.home_team, b.home_score, b.away_score, m.type, m.home_score home_result, m.away_score away_result
+SELECT m.id, m.game_start, b.match_id, m.away_team, m.home_team, b.home_score, b.away_score, m.type, m.home_score home_result, m.away_score away_result
 FROM bets b, matches m
 WHERE b.user_id = ?
 AND b.match_id = m.id
