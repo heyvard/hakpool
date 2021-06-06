@@ -22,3 +22,9 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: kofoed
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        if: github.ref == 'refs/heads/master'
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: vandelay
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
