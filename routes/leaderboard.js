@@ -38,7 +38,6 @@ router.get('/', asyncHandler(async (req, res) => {
     }
 
     const matchScoreMap = matchResultScores(allBets)
-    console.log("Match scores: ", matchScoreMap)
     console.log("Match scores: " + JSON.stringify(matchScoreMap))
 
     const personMap = {};
